@@ -294,13 +294,16 @@ namespace Matcha
 							branch = res.Blocks;
 						}
 						if(branch.First().PreviousHash == LastHash) {
+							var removed = false;
 							foreach (var block in branch) {
 								foreach (var transaction in block.Transactions) {
 									if (TransactionPool.Contains(transaction)) {
 										TransactionPool.Remove(transaction);
+										removed = true;
 									}
 								}
 							}
+							if (removed) OnTransactionPoolChanged();
 							BlockChain.AddRange(branch);
 							break;
 						}
@@ -319,13 +322,16 @@ namespace Matcha
 							--currentIndex;
 						}
 						BlockChain.RemoveRange(currentIndex, BlockChain.Count - currentIndex);
+						var removed2 = false;
 						foreach (var block in branch) {
 							foreach (var transaction in block.Transactions) {
 								if (TransactionPool.Contains(transaction)) {
 									TransactionPool.Remove(transaction);
+									removed2 = true;
 								}
 							}
 						}
+						if (removed2) OnTransactionPoolChanged();
 						BlockChain.AddRange(branch);
 						break;
 					}
