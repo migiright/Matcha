@@ -1,0 +1,35 @@
+﻿<Window x:Class="Matcha.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Matcha"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Initialized="Window_Initialized">
+  <Grid Unloaded="Grid_Unloaded">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="2*"/>
+      <ColumnDefinition Width="auto"/>
+      <ColumnDefinition Width="3*"/>
+      <ColumnDefinition Width="auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+    <TextBox Name="Nodes" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" IsReadOnly="True"/>
+    <TextBox Name="PortNumber" Grid.Column="0" Grid.Row="1" IsReadOnly="True"/>
+    <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Orientation="Vertical">
+      <Button Name="GetNode" Click="GetNodeButton_Click">GetNode</Button>
+      <Button Name="Sync" Click="Sync_Click">Sync</Button>
+      <Button Name="CriateBlock" Click="CriateBlock_Click">CriateBlock</Button>
+    </StackPanel>
+    <TextBox Name="Log" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" IsReadOnly="True"/>
+    <TextBox Name="BlockChain" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" IsReadOnly="True"/>
+    <TextBox Name="TransactionPool" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" IsReadOnly="True"/>
+    <TextBox Name="Message" Grid.Column="2" Grid.Row="3"/>
+    <Button Name="Send" Click="Send_Click" Grid.Column="3" Grid.Row="3">Send</Button>
+  </Grid>
+</Window>
